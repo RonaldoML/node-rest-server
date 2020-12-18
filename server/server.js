@@ -13,12 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //parse application/json
 app.use(bodyParser.json());
 
-app.use(require('./routes/usuario'));
 
-const port = process.env.PORT || 3000;
+//Conf global de rutas
+app.use(require('./routes/index'));
 
 
 mongoose.set('useFindAndModify', false);
+
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useCreateIndex: true }, (err, res) => {
     if (err) throw err;
     console.log('Base de datos online');
